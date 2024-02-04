@@ -14,6 +14,10 @@ export default class ProductDatatable extends LightningElement {
 
     @track data =[];
     columns = columns;
+    @track showProducts = true;
+    @track showCreateProduct = false;
+    @track showUpdateProduct = false;
+    @track showDeleteProduct = false;
 
     connectedCallback() {
         getproducts()
@@ -24,5 +28,30 @@ export default class ProductDatatable extends LightningElement {
       .catch((error) => {
         this.error = error;
       });
+    }
+
+    handleClickCreate(event) {
+        var selectedRecords =  this.template.querySelector("lightning-datatable").getSelectedRows();
+        console.log('selectedRecords' + JSON.stringify(selectedRecords));
+        this.showProducts = false;
+        this.showCreateProduct = true;
+        this.showUpdateProduct = false;
+        this.showDeleteProduct = false;
+    }
+    handleClickUpdate(event) {
+        var selectedRecords =  this.template.querySelector("lightning-datatable").getSelectedRows();
+        console.log('selectedRecords' + JSON.stringify(selectedRecords));
+        this.showProducts = false;
+        this.showCreateProduct = false;
+        this.showUpdateProduct = true;
+        this.showDeleteProduct = false;
+    }
+    handleClickDelete(event) {
+        var selectedRecords =  this.template.querySelector("lightning-datatable").getSelectedRows();
+        console.log('selectedRecords' + JSON.stringify(selectedRecords));
+        this.showProducts = false;
+        this.showCreateProduct = false;
+        this.showUpdateProduct = false;
+        this.showDeleteProduct = true;
     }
 }

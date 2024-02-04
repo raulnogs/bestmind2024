@@ -1,9 +1,32 @@
 <template>
-    <div style="height: 300px;">
+    <div if:true={showProducts} style="height: 300px;">
         <lightning-datatable
                 key-field="id"
+                enable-infinite-loading
+                max-row-selection="1"
                 data={data}
-                columns={columns}>
+                columns={columns}
+                >
         </lightning-datatable>
+    </div>
+    <div>
+         <!-- Brand variant: Identifies the primary action in a group of buttons -->
+        <lightning-button variant="brand" label="Criar Produto" title="Primary action" onclick={handleClickCreate} class="slds-m-left_x-small"></lightning-button>
+        <!-- Brand outline variant: Identifies the primary action in a group of buttons, but has a lighter look -->
+        <lightning-button variant="brand-outline" label="Editar Produto" title="Primary action with lighter look" onclick={handleClickUpdate} class="slds-m-left_x-small"></lightning-button>
+        <!-- Destructive variant: Identifies a potentially negative action -->
+        <lightning-button variant="destructive" label="Deletar Produto" title="Destructive action" onclick={handleClickDelete} class="slds-m-left_x-small"></lightning-button>
+    </div>
+
+    <div if:true={showCreateProduct}>
+        create
+    </div>
+
+    <div if:true={showUpdateProduct}>
+        update
+    </div>
+
+    <div if:true={showDeleteProduct}>
+        delete
     </div>
 </template>
