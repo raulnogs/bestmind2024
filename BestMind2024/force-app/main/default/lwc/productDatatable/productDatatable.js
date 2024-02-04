@@ -21,12 +21,14 @@ export default class ProductDatatable extends LightningElement {
     @track showUpdateProduct = false;
     @track showDeleteProduct = false;
     @track selectedId;
+    
 
     @track newProduct = {
         Name : null,
         Codigo_do_Produto__c : null,
         Descricao_do_produto__c : null,
-        Preco_do_Produto__c : null
+        Preco_do_Produto__c : null,
+        Id : null
     }
     @track toDeleteProduct = {
         Name : null,
@@ -72,6 +74,7 @@ export default class ProductDatatable extends LightningElement {
         this.showCreateProduct = false;
         this.showUpdateProduct = true;
         this.showDeleteProduct = false;
+        this.selectedId = selectedRecords[0];
         }
         
     }
@@ -120,15 +123,20 @@ export default class ProductDatatable extends LightningElement {
     }
 
     handleSaveProduct() {
+        if(this.showUpdateProduct) {
+            this.newProduct.Id = this.selectedId.Id;
+        }
         saveProduct({objProduto : this.newProduct})
         .then((result) => {
           console.log('result ' + JSON.stringify(result));
+          if(result) {
+            window.location.reload(true);
+          }
         })
         .catch((error) => {
           this.error = error;
         });
 
-        window.location.reload(true);
     }
 
     handleCancel() {

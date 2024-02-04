@@ -10,7 +10,7 @@ public without sharing class ProductDatatableController {
 
     @AuraEnabled
     public static Boolean saveProduct(Produto__c objProduto){
-    Database.SaveResult srProduct = Database.insert(objProduto, false);
+    Database.UpsertResult srProduct = Database.upsert(objProduto, false);
     return srProduct.isSuccess();
 
     }
