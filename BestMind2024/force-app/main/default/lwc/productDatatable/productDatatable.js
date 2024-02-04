@@ -75,6 +75,10 @@ export default class ProductDatatable extends LightningElement {
         this.showUpdateProduct = true;
         this.showDeleteProduct = false;
         this.selectedId = selectedRecords[0];
+        this.newProduct.Name = selectedRecords[0].Name;
+        this.newProduct.Codigo_do_Produto__c = selectedRecords[0].Codigo_do_Produto__c;
+        this.newProduct.Preco_do_Produto__c = selectedRecords[0].Preco_do_Produto__c;
+        this.newProduct.Descricao_do_produto__c = selectedRecords[0].Descricao_do_produto__c;
         }
         
     }

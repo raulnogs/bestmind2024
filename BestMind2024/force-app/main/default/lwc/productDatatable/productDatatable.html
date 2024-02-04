@@ -55,7 +55,7 @@
           <lightning-button variant="destructive" label="Cancelar" title="Primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
     </div>
 
-    <div if:true={showDeleteProduct}>
+    <div style="background-color: white;" if:true={showDeleteProduct}>
         <h1>Tem certeza que deseja deletar esse produto?</h1>
         <lightning-button variant="destructive" label="Deletar" title="Primary action" onclick={handleDeleteProduct} class="slds-m-left_x-small"></lightning-button>
         <lightning-button variant="brand" label="Cancelar" title="Primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
