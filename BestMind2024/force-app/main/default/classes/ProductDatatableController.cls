@@ -7,4 +7,21 @@ public without sharing class ProductDatatableController {
         return lstProdutosReturn;
 
     }  
+
+    @AuraEnabled
+    public static Boolean saveProduct(Produto__c objProduto){
+    Database.SaveResult srProduct = Database.insert(objProduto, false);
+    return srProduct.isSuccess();
+
+    }
+
+    @AuraEnabled
+    public static Boolean deleteProduct(Produto__c objProdutoId){
+
+        // Produto__c objProduto = [SELECT ID FROM Produto__c WHERE ID =:objProdutoId LIMIT 1];
+        System.debug('objProduto' + JSON.serialize(objProdutoId));
+        Database.DeleteResult drProduct = Database.delete(objProdutoId, false);
+
+        return drProduct.isSuccess();
+    }
 }
